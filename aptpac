@@ -33,7 +33,7 @@ case $SYNTAX in
         listmore)       pacman -Qi;;
         listless)       pacman -Q | wc -l;;
         build)          makepkg -sri;;
-        *)              
+        *)
         echo "aptpac: a pacman wrapper with apt syntax";
         echo "no argument/invalid argument - print this help";
         echo "install - installs a package";
