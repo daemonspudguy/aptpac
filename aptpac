@@ -45,7 +45,7 @@ ADD_OPTION () {
     OPTIONS="${OPTIONS} ${@}"
 }
 
-while getopts 'ydf-:c:' arg; do
+while getopts 'ydf-:c:hv' arg; do
     case "${arg}" in
         y) ADD_OPTION "--noconfirm" ;;
         d) ADD_OPTION "-w" ;;
