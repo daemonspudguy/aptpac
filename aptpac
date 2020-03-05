@@ -50,7 +50,7 @@ while getopts 'ydf-:c:' arg; do
         y) ADD_OPTION "--noconfirm" ;;
         d) ADD_OPTION "-w" ;;
         f) : ;;
-        c) ADD_OPTION "--config ${OPTARG}"
+        c) ADD_OPTION "--config ${OPTARG}" ;;
         h) _usage; _exit 0 ;;
         v) _version; _exit 0 ;;
         -)
@@ -89,7 +89,7 @@ case "${COMMAND}" in
     full-upgrade) ADD_OPTION "-Syu" ;;
     edit-sources) sudo nano /etc/pacman.conf; _exit 0 ;;
     dist-upgrade) ADD_OPTION "-Syu" ;;
-    autoremove) ADD_OPTION "-Qttdq | pacman -Rsnc -"
+    autoremove) ADD_OPTION "-Qttdq | pacman -Rsnc -" ;;
     list) 
         if ${installed}; then
             ADD_OPTION "-Q | grep"
@@ -103,4 +103,5 @@ case "${COMMAND}" in
         ;;
 esac
 
-echo "${pacman} ${OPTIONS} ${PACKAGE}"
+# echo "${pacman} ${OPTIONS} ${PACKAGE}"
+${pacman} ${OPTIONS} ${PACKAGE}
