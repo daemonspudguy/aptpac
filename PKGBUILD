@@ -13,7 +13,7 @@ makedepends=('git')
 source=('git://github.com/Hayao0819/aptpac.git')
 md5sums=('SKIP')
 _gitname='aptpac'
-conflicts=('apt' 'apt-git')
+conflicts=()
 
 pkgver() {
         cd "$_gitname" &&
