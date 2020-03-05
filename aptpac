@@ -16,6 +16,15 @@
 set -e
 
 OPTIONS=
+AURHELP=
+
+if [[ ${UID} = 0 ]]; then
+    pacman=pacman
+elif [[ -n ${AURHELP} ]]; then
+    pacman=${AURHELP}
+else
+    pacman=pacman
+fi
 
 # List option
 installed=false
@@ -36,18 +45,23 @@ ADD_OPTION () {
     OPTIONS="${OPTIONS} ${@}"
 }
 
-while getopts 'ydf-:' arg; do
+while getopts 'ydf-:c:' arg; do
     case "${arg}" in
         y) ADD_OPTION "--noconfirm" ;;
         d) ADD_OPTION "-w" ;;
         f) : ;;
+        c) ADD_OPTION "--config ${OPTARG}"
+        h) _usage; _exit 0 ;;
+        v) _version; _exit 0 ;;
         -)
             case "${OPTARG}" in
                 download-only) ADD_OPTION "-w" ;;
                 fix-broken) :;;
                 yes) ADD_OPTION "--noconfirm" ;;
                 assume-yes) ADD_OPTION "--noconfirm" ;;
-                installed) installed=true;
+                installed) installed=true;;
+                purge) ADD_OPTION "-n" ;;
+                help) _usage; _exit 0 ;;
             esac
     esac
 done
@@ -72,6 +86,10 @@ case "${COMMAND}" in
     update) ADD_OPTION "-Syy" ;;
     upgrade) ADD_OPTION "-Syu" ;;
     search) ADD_OPTION "-Ss" ;;
+    full-upgrade) ADD_OPTION "-Syu" ;;
+    edit-sources) sudo nano /etc/pacman.conf; _exit 0 ;;
+    dist-upgrade) ADD_OPTION "-Syu" ;;
+    autoremove) ADD_OPTION "-Qttdq | pacman -Rsnc -"
     list) 
         if ${installed}; then
             ADD_OPTION "-Q | grep"
@@ -85,4 +103,4 @@ case "${COMMAND}" in
         ;;
 esac
 
-echo "pacman ${OPTIONS} ${PACKAGE}"
+echo "${pacman} ${OPTIONS} ${PACKAGE}"
