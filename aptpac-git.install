@@ -1,6 +1,7 @@
 post_install() {
     ln -s usr/bin/pacapt usr/bin/apt
     ln -s usr/bin/pacapt usr/bin/apt-get
+    echo "Created /usr/bin/apt !"
 }
 
 post_remove() {
