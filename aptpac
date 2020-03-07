@@ -30,7 +30,24 @@ fi
 installed=false
 
 _usage () {
-    :
+    echo "usage ${0} [options] [command] [packages]"
+    echo " commands:              "
+    echo "    install                       Install the specified package."
+    echo "    remove                        Remove the specified package."
+    echo "    purge                         Permanently remove the package."
+    echo "    update                        Update the package database."
+    echo "    upgrade                       Update the package."
+    echo "    search                        Search for a package."
+    echo "    autoremove                    Remove unnecessary packages."
+    echo "    list                          Displays a list of packages."
+    echo
+    echo " general options:       "
+    echo "    -y | --yes  | --assume-yes    Do not check."
+    echo "    -d | --download-only          Only download the package."
+    echo "    -c <file>                     Config file for pacman."
+    echo "    -h | --help                   Display this help."
+    echo "    -v                            Displays the version of pacman."
+    echo "    --purge                       Delete the entire configuration file."
 }
 
 _exit () {
