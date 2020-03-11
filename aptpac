@@ -106,7 +106,12 @@ case "${COMMAND}" in
     full-upgrade) ADD_OPTION "-Syu" ;;
     edit-sources) sudo nano /etc/pacman.conf; _exit 0 ;;
     dist-upgrade) ADD_OPTION "-Syu" ;;
-    autoremove) [[ -n $(${pacman} -Qttdq) ]] && ADD_OPTION "-Qttdq | pacman -Rsnc -" ;;
+    autoremove) if [[ -n $(${pacman} -Qttdq) ]]; then
+                    ADD_OPTION "-Qttdq | pacman -Rsnc -"
+                else
+                    echo "No packages to remove."
+                fi
+                ;;
     list)
         if ${installed}; then
             ADD_OPTION "-Q | grep"
