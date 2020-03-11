@@ -1,14 +1,14 @@
 #!/bin/bash
 #
-#               __                             
-#              /\ \__                          
-#   __    _____\ \ ,_\ _____     __      ___   
-# /'__`\ /\ '__`\ \ \//\ '__`\ /'__`\   /'___\ 
-#/\ \L\.\\ \ \L\ \ \ \\ \ \L\ /\ \L\.\_/\ \__/ 
+#               __
+#              /\ \__
+#   __    _____\ \ ,_\ _____     __      ___
+# /'__`\ /\ '__`\ \ \//\ '__`\ /'__`\   /'___\
+#/\ \L\.\\ \ \L\ \ \ \\ \ \L\ /\ \L\.\_/\ \__/
 #\ \__/.\_\ \ ,__/\ \__\ \ ,__\ \__/.\_\ \____\
 # \/__/\/_/\ \ \/  \/__/\ \ \/ \/__/\/_/\/____/
-#           \ \_\        \ \_\                 
-#            \/_/         \/_/    
+#           \ \_\        \ \_\
+#            \/_/         \/_/
 # a pacman wrapper with syntax based on debian's apt
 # (c) 2019-2020 Fascode Network.
 # maintained by Yamada Hayao
@@ -106,15 +106,15 @@ case "${COMMAND}" in
     full-upgrade) ADD_OPTION "-Syu" ;;
     edit-sources) sudo nano /etc/pacman.conf; _exit 0 ;;
     dist-upgrade) ADD_OPTION "-Syu" ;;
-    autoremove) ADD_OPTION "-Qttdq | pacman -Rsnc -" ;;
-    list) 
+    autoremove) [[ -n $(${pacman} -Qttdq) ]] && ADD_OPTION "-Qttdq | pacman -Rsnc -" ;;
+    list)
         if ${installed}; then
             ADD_OPTION "-Q | grep"
         else
             ADD_OPTION "-Ss"
         fi
         ;;
-    *) 
+    *)
         _msg_error "Invalid comman '${COMMAND}'"
         _exit 1
         ;;
