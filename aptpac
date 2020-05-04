@@ -111,6 +111,7 @@ case "${COMMAND}" in
                 else
                     echo "No packages to remove."
                 fi
+                exit 0
                 ;;
     list)
         if ${installed}; then
