@@ -107,7 +107,7 @@ case "${COMMAND}" in
     edit-sources) sudo nano /etc/pacman.conf; _exit 0 ;;
     dist-upgrade) ADD_OPTION "-Syu" ;;
     autoremove) if [[ -n $(${pacman} -Qttdq) ]]; then
-                    ADD_OPTION "-Qttdq | pacman -Rsnc -"
+                    pacman -Qttdq | pacman -Rsnc -
                 else
                     echo "No packages to remove."
                 fi
