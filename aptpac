@@ -17,14 +17,40 @@ set -e
 
 OPTIONS=
 AURHELP=
+HELPERS=(
+    "yay"
+    "yaourt"
+    "aurman"
+)
 
-if [[ ${UID} = 0 ]]; then
-    pacman=pacman
-elif [[ -n ${AURHELP} ]]; then
-    pacman=${AURHELP}
-else
-    pacman=pacman
+pacman="pacman"
+
+
+if [[ ! "${UID}" = 0 ]]; then
+    if [[ -z ${AURHELP} ]]; then
+        for AURHELP in ${HELPERS[@]}; do
+            if [[ -f $(which ${AURHELP} 2> /dev/null) ]]; then
+                pacman=$(which ${AURHELP})
+                break
+            fi
+        done
+    else
+        if [[ -f $(which ${AURHELP} 2> /dev/null) ]]; then
+            pacman=${AURHELP}
+        else
+            echo "${AURHELP} is not installed." >&2
+            exit 1
+        fi
+    fi
 fi
+
+
+if [[ ! "${pacman}" = "pacman" ]]; then
+    echo "Use AUR helper ${pacman}."
+elif [[ ! "${UID}" = 0 ]]; then
+    pacman="sudo pacman"
+fi
+
 
 # List option
 installed=false
