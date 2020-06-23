@@ -21,9 +21,10 @@ HELPERS=(
     "yay"
     "yaourt"
     "aurman"
+    "pikaur"
 )
 
-pacman="pacman"
+pacman="pikaur"
 
 
 if [[ ! "${UID}" = 0 ]]; then
