@@ -1,6 +1,6 @@
-pkgbase = aptpac
-	pkgdesc = a pacman wrapper with syntax from debian's apt
-	pkgver = 2.1.0
+pkgbase = aptpik
+	pkgdesc = a pikaur wrapper with syntax from debian's apt
+	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/FascodeNet/aptpac
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = aptpac
 	conflicts = apt
 	conflicts = apt-git
 	conflicts = aptpac-git
-	source = https://github.com/FascodeNet/aptpac/archive/v2.1.0.zip
+	source = https://github.com/daemonspudguy/aptpik/archive/1.0.zip
 	md5sums = SKIP
 
-pkgname = aptpac
+pkgname = aptpik
 
