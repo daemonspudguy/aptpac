@@ -7,9 +7,11 @@ pkgbase = aptpik
 	license = WTFPL
 	makedepends = git
 	depends = sudo
+	depends = pikaur
 	conflicts = apt
 	conflicts = apt-git
 	conflicts = aptpac-git
+	conflicts = aptpac
 	source = https://github.com/daemonspudguy/aptpik/archive/1.0.zip
 	md5sums = SKIP
 
