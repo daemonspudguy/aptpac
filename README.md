@@ -1,3 +1,2 @@
-# aptpac
-pacman wrapper with apt syntax.  
-Includes pikaur support.
+# aptpik
+pikaur wrapper with apt syntax.  
