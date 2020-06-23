@@ -1,14 +1,13 @@
-# Maintaoner: Yamada Hayao <development@fascode.net>
-# Maintainer: Abraham Levine <echo iue@trnspljc.890 | tr ietursnpl890jc acprlsurecomed>
+# Maintainer: Jacob A. Tice <jacob.a.tice@gmail.com>
 
-pkgname=aptpac
-pkgver=2.1.0
+pkgname=aptpik
+pkgver=1.0
 pkgrel=1
-pkgdesc="a pacman wrapper with syntax from debian's apt"
+pkgdesc="a pikaur wrapper with syntax from debian's apt"
 arch=('any')
-url="https://github.com/FascodeNet/aptpac"
+url="https://github.com/daemonspudguy/aptpac"
 license=('WTFPL')
-depends=('sudo')
+depends=('sudo' 'pikaur')
 makedepends=('git')
 source=("${url}/archive/v${pkgver}.zip")
 md5sums=('SKIP')
@@ -18,8 +17,8 @@ conflicts=('apt' 'apt-git' 'aptpac-git')
 
 package() {
         cd "${_gitname}-${pkgver}" &&
-        install -m 755 -D aptpac "${pkgdir}/usr/bin/aptpac"
+        install -m 755 -D aptpik "${pkgdir}/usr/bin/aptpik"
         cd "${pkgdir}/usr/bin/"
-        ln -s "aptpac" "apt"
-        ln -s "aptpac" "apt-get"
+        ln -s "aptpik" "apt"
+        ln -s "aptpik" "apt-get"
 }
