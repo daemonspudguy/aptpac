@@ -12,7 +12,7 @@ makedepends=('git')
 source=("${url}/archive/v${pkgver}.zip")
 md5sums=('SKIP')
 _gitname='aptpik'
-conflicts=('apt' 'apt-git' 'aptpac-git')
+conflicts=('apt' 'apt-git' 'aptpac-git' 'aptpac')
 
 
 package() {
