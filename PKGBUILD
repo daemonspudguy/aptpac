@@ -11,7 +11,7 @@ depends=('sudo' 'pikaur')
 makedepends=('git')
 source=("${url}/archive/v${pkgver}.zip")
 md5sums=('SKIP')
-_gitname='aptpac'
+_gitname='aptpik'
 conflicts=('apt' 'apt-git' 'aptpac-git')
 
 
